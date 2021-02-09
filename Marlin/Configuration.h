@@ -103,13 +103,13 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT 2
+#define SERIAL_PORT -1
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 -1
+#define SERIAL_PORT_2 2
 
 /**
  * This setting determines the communication speed of the printer.
@@ -993,13 +993,13 @@
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (100*60)
+#define XY_PROBE_SPEED (150*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
+#define Z_PROBE_SPEED_SLOW (4*60)
 
 /**
  * Multiple Probing
@@ -1394,7 +1394,7 @@
 
 // Homing speeds (mm/min)
 #define HOMING_FEEDRATE_XY (50*60)
-#define HOMING_FEEDRATE_Z  (4*60)
+#define HOMING_FEEDRATE_Z  (20*60)
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2360,14 +2360,14 @@
 // Support for Adafruit NeoPixel LED driver
 //#define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
-  #define NEOPIXEL_TYPE   NEO_GRBW // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-  #define NEOPIXEL_PIN     4       // LED driving pin
+  #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
+  #define NEOPIXEL_PIN     PA8       // LED driving pin
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5
-  #define NEOPIXEL_PIXELS 30       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
+  #define NEOPIXEL_PIXELS 8       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
   #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
   #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
-  //#define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+  #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
   //#define NEOPIXEL2_SEPARATE
